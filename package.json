@@ -1,0 +1,17 @@
+{
+  "author": "Mark Schmale <masch@masch.it> (http://masch.it)",
+  "name": "tee",
+  "description": "Stream multiplexer for writable streams",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/themasch/node-tee.git"
+  },
+  "main": "tee.js",
+  "engines": {
+    "node": ">=0.4.0"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {}
+}
