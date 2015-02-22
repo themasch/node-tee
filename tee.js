@@ -1,8 +1,8 @@
+"use strict";
+var Writable = require("stream").Writable;
+var EventEmitter = require("events").EventEmitter;
 var tee = function(/** streams **/) {
-    this.streams = [];
-    for(var x in arguments) {
-        this.addStream(arguments[x]);
-    }
+    this.streams = Array.apply(null, arguments);
 };
 
 tee.prototype.addStream = function(s) {
@@ -13,24 +13,18 @@ function forward(method) {
     tee.prototype[method] = function() {
         var args = arguments;
         this.streams.forEach(function(s) {
-            s[method].apply(s, args); 
+            s[method].apply(s, args);
         });
     };
 }
 
-[   "write", 
-    "end", 
-    "destroy", 
-    "destroySoon", 
-    "addListener", 
-    "on", 
-    "once", 
-    "removeListener", 
-    "removeAllListeners", 
-    "setMaxListeners", 
-    "listeners", 
-    "emit" ].forEach(forward);
+for (var prop in Writable.prototype){
+	forward(prop);
+}
+for (var prop in EventEmitter.prototype){
+	forward(prop);
+}
 
-module.exports = tee; 
+module.exports = tee;
 
 
