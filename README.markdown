@@ -1,3 +1,6 @@
+# this thing is old and ugly and nasty and useless. go look somewhere else! 
+
+
 # tee
 
 tee is a simple stream multiplexer for nodes writable streams. 
